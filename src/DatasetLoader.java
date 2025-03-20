@@ -39,8 +39,16 @@ public class DatasetLoader {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
-                labels.add(Integer.parseInt(parts[parts.length-1]));
+                String label = parts[parts.length-1];
+
+                if ("Iris-versicolor".equals(label)) {
+                    labels.add(0);  // Assign 0 for Iris-versicolor
+                } else if ("Iris-virginica".equals(label)) {
+                    labels.add(1);  // Assign 1 for Iris-virginica
+                }
             }
+
+
 
             br.close();
 

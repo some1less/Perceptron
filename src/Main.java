@@ -3,6 +3,6 @@ public class Main {
 
         PTrainer.main(args);
 
-        // PUI.main(args); // to classify manually
+        PUI.main(args); // to classify manually
     }
 }

@@ -9,7 +9,7 @@ public class Perceptron {
 
     public Perceptron(int inputSize, double learningRate) {
         this.weights = new double[inputSize];
-        this.bias = Math.random();
+        this.bias = Math.random() * 0.1;
         this.learningRate = learningRate;
 
         for (int i = 0; i < weights.length; i++) {
