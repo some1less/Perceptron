@@ -17,8 +17,6 @@ public class PTrainer {
             System.out.println(e);
         }
 
-
-
         List<double[]> testData = DatasetLoader.loadData("data/perceptron.test.data");
         List<Integer> testLabels = DatasetLoader.loadLabels("data/perceptron.test.data");
 
@@ -35,7 +33,7 @@ public class PTrainer {
 //        Collections.shuffle(trainLabels);
 
 
-        p.train(trainData, trainLabels, 10000);
+        p.train(trainData, trainLabels, 385);
 
         int correctPredictions = 0;
         for (int i = 0; i < testData.size(); i++) {
@@ -45,6 +43,12 @@ public class PTrainer {
             }
         }
 
+        for (double w : p.weights) {
+            System.out.print(w + ", ");
+        }
+        System.out.println();
+
+        System.out.println(p.bias);
         System.out.println("Accuracy: " + (correctPredictions / (double) testData.size()) * 100 + "%");
     }
 }

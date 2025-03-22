@@ -3,8 +3,8 @@ import java.util.logging.Level;
 
 public class Perceptron {
 
-    private double[] weights;
-    private double bias;
+    public double[] weights;
+    public double bias;
     private double learningRate;
 
     public Perceptron(int inputSize, double learningRate) {
