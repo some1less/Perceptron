@@ -49,9 +49,6 @@ public class DatasetLoader {
             }
 
 
-
-            br.close();
-
         } catch (Exception e){
             e.printStackTrace();
         }

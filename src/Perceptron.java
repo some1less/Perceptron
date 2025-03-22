@@ -9,7 +9,7 @@ public class Perceptron {
 
     public Perceptron(int inputSize, double learningRate) {
         this.weights = new double[inputSize];
-        this.bias = Math.random() * 0.1;
+        this.bias = Math.random();
         this.learningRate = learningRate;
 
         for (int i = 0; i < weights.length; i++) {
@@ -17,12 +17,13 @@ public class Perceptron {
         }
     }
 
-    public int predict(double[] inputs) {
-        double sum = bias;
-        for (int i = 0; i < inputs.length; i++) {
-            sum += weights[i] * inputs[i];
+    public int predict(double[] testVector){
+        double res = 0;
+        for (int i = 0; i < testVector.length; i++){
+            res += testVector[i] * weights[i];
         }
-        return (sum >= 0) ? 1 : 0;
+        res -= bias;
+        return res >= 0 ? 1 : 0;
     }
 
     public void train(List<double[]> inputs, List<Integer> labels, int epochs) {
@@ -33,12 +34,12 @@ public class Perceptron {
                 double[] input = inputs.get(i);
                 int label = labels.get(i);
                 int prediction = predict(input);
-                int error = prediction - label;
+                int error = label - prediction;
 
                 for (int j = 0; j < input.length; j++) {
                     weights[j] += learningRate * error * input[j];
                 }
-                bias += error * learningRate;
+                bias -= error * learningRate;
 
             }
         }
